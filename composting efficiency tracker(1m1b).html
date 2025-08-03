@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Composting Efficiency Analysis</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f2fdf5;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #2e8b57;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      background-color: white;
+      padding: 25px;
+      margin-bottom: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .flex-section {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .half-box {
+      flex: 1;
+    }
+
+    button {
+      background-color: #2e8b57;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0 20px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .bar-container {
+      background-color: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 20px;
+      margin-top: 10px;
+    }
+
+    .bar-fill {
+      background-color: #2e8b57;
+      height: 100%;
+      width: 0%;
+      transition: width 0.5s ease-in-out;
+    }
+
+    footer {
+      background-color: #2e8b57;
+      color: white;
+      text-align: center;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Composting Efficiency Analysis</h1>
+    <p>Measure how effective your composting process is</p>
+  </header>
+
+  <div class="container">
+
+    <div class="section flex-section">
+      <div class="half-box">
+        <h2>Composting Tip of the Day</h2>
+        <p id="tip">Turn your compost every 2–3 days for better aeration.</p>
+        <button onclick="showAnotherTip()">Show Another Tip</button>
+      </div>
+
+      <div class="half-box">
+        <h2>Did You Know?</h2>
+        <p id="fact">Food waste is the single largest component in landfills!</p>
+        <button onclick="showFact()">New Fact</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Efficiency Calculator</h2>
+      <label for="initial">Initial Waste (kg):</label>
+      <input type="number" id="initial" placeholder="e.g. 5">
+
+      <label for="final">Final Compost (kg):</label>
+      <input type="number" id="final" placeholder="e.g. 2.5">
+
+      <button onclick="calculateEfficiency()">Calculate Efficiency</button>
+      <p id="result"></p>
+
+      <div class="bar-container">
+        <div id="bar" class="bar-fill"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    &copy; 2025 CompostEase | Designed for Clean Waste Awareness
+  </footer>
+
+  <script>
+    const tips = [
+      "Maintain a good carbon:nitrogen ratio (3:1).",
+      "Avoid dairy, meat, and oily food in compost.",
+      "Keep the compost moist but not soggy.",
+      "Use shredded leaves or cardboard for better texture.",
+      "Chop waste into smaller pieces to speed up decay."
+    ];
+
+    const facts = [
+      "Food waste is the single largest component in landfills!",
+      "Composting can reduce greenhouse gases by up to 30%.",
+      "India generates ~62M tonnes of waste annually, most of it organic.",
+      "Composting reduces the need for chemical fertilizers.",
+      "1 ton of compost can sequester 0.25 tons of carbon dioxide."
+    ];
+
+    function showAnotherTip() {
+      const randomTip = tips[Math.floor(Math.random() * tips.length)];
+      document.getElementById("tip").innerText = randomTip;
+    }
+
+    function showFact() {
+      const randomFact = facts[Math.floor(Math.random() * facts.length)];
+      document.getElementById("fact").innerText = randomFact;
+    }
+
+    function calculateEfficiency() {
+      const initial = parseFloat(document.getElementById("initial").value);
+      const final = parseFloat(document.getElementById("final").value);
+      const resultEl = document.getElementById("result");
+      const bar = document.getElementById("bar");
+
+      if (isNaN(initial) || isNaN(final) || initial <= 0 || final < 0) {
+        resultEl.innerText = "Please enter valid numeric values.";
+        bar.style.width = "0%";
+        return;
+      }
+
+      const efficiency = (final / initial) * 100;
+      resultEl.innerText = `Efficiency: ${efficiency.toFixed(2)}%`;
+      bar.style.width = efficiency + "%";
+    }
+  </script>
+
+</body>
+</html>
