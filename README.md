@@ -7,7 +7,6 @@ This project is a simple web-based interface designed to spread awareness about 
 ## Project Overview
 
 - Analyzed composting data under different conditions like temperature, moisture, and time.
-- Displayed efficiency using interactive bar charts.
 - Included composting tips and awareness facts to educate users.
 
 ---
@@ -24,7 +23,6 @@ This project is a simple web-based interface designed to spread awareness about 
 
 - **Efficiency Tracker** – Track the conversion of waste into compost.
 - **Composting Tips & Facts** – Appear dynamically to educate users.
-- **Visual Charts** – Bar graphs representing efficiency under various conditions.
 - **Clean UI** – Simple, user-friendly design for educational and demonstration purposes.
 
 ---
